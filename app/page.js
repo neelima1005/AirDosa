@@ -19,9 +19,9 @@ import {
   Check,
   X,
   ArrowRight,
-  Twitter,
-  Instagram,
-  Github,
+  Bird,
+  Camera,
+  Code2,
   Satellite,
   BatteryCharging,
   Compass,
@@ -432,7 +432,7 @@ export default function Home() {
                   <div className="nav-actions">
                       <button className="btn btn-secondary btn-nav"  onClick={openOrderModal}>Order Console</button>
                       <button className="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu" onClick={toggleMenu}>
-                          <Menu id="menuIcon" />
+                          <MenuIcon id="menuIcon" />
                       </button>
                   </div>
               </div>
@@ -624,12 +624,12 @@ export default function Home() {
                                       <span className="option-name">Classic Trio</span>
                                       <span className="option-price">+₹0</span>
                                   </div>
-                                  <div className="option-chip"  onClick="selectOption('chutney', this, 'Gunpowder Ghee', 30)">
+                                  <div className="option-chip"  onClick={(e) => selectOption('chutney', e.currentTarget, 'Gunpowder Ghee', 30)}>
                                       <span className="option-icon">🌶️</span>
                                       <span className="option-name">Podi & Ghee</span>
                                       <span className="option-price">+₹30</span>
                                   </div>
-                                  <div className="option-chip"  onClick="selectOption('chutney', this, 'Double Sambar', 15)">
+                                  <div className="option-chip"  onClick={(e) => selectOption('chutney', e.currentTarget, 'Double Sambar', 15)}>
                                       <span className="option-icon">🥣</span>
                                       <span className="option-name">Extra Sambar</span>
                                       <span className="option-price">+₹15</span>
@@ -641,9 +641,9 @@ export default function Home() {
                           <div className="slider-wrapper">
                               <div className="slider-header">
                                   <span className="slider-lbl">Drone Delivery Propulsion</span>
-                                  <span className="slider-val" id="speedVal">Speed: 45 km/h</span>
+                                  <span className="slider-val" id="speedVal">{speedValText}</span>
                               </div>
-                              <input type="range" className="custom-range" id="speedSlider" min="30" max="90" value="45"  onInput="updateSpeed(this.value)" />
+                              <input type="range" className="custom-range" id="speedSlider" min="30" max="90" value={flightSpeed} onInput={(e) => updateSpeed(e.target.value)} />
                               
                               <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.75rem", color: "var(--text-dim)" }}>
                                   <span>Eco Mode (Standard)</span>
@@ -661,10 +661,10 @@ export default function Home() {
                               <div className="flight-tracker-map">
                                   <div className="radar-sweep-map"></div>
                                   <svg className="flight-path-svg">
-                                      <path id="flightPath" d="M 30 110 Q 120 20 220 110" fill="none" stroke="rgba(0, 242, 254, 0.3)" stroke-width="2" stroke-dasharray="5,5"/>
+                                      <path id="flightPath" d="M 30 110 Q 120 20 220 110" fill="none" stroke="rgba(0, 242, 254, 0.3)" strokeWidth="2" strokeDasharray="5,5"/>
                                   </svg>
                                   {/* Animated drone cursor */}
-                                  <div className="map-drone-marker" id="mapDrone" style={{ left: "30px", top: "95px" }}>
+                                  <div className="map-drone-marker" id="mapDrone" ref={mapDroneRef} style={{ left: "30px", top: "95px" }}>
                                       <Navigation2 />
                                   </div>
                               </div>
@@ -673,11 +673,11 @@ export default function Home() {
                               <div className="preview-summary">
                                   <div className="preview-stat-row">
                                       <span className="psr-lbl">Calibrated Payload</span>
-                                      <span className="psr-val" id="summaryPayload">Masala Dosa + Classic Chutney</span>
+                                      <span className="psr-val" id="summaryPayload">{summaryPayload}</span>
                                   </div>
                                   <div className="preview-stat-row">
                                       <span className="psr-lbl">Calculated Flight Time</span>
-                                      <span className="psr-val" id="summaryTime">4 mins 45 secs</span>
+                                      <span className="psr-val" id="summaryTime">{summaryTime}</span>
                                   </div>
                                   <div className="preview-stat-row">
                                       <span className="psr-lbl">Thermal Integrity</span>
@@ -688,7 +688,7 @@ export default function Home() {
       
                           {/* Total cost */}
                           <div className="preview-total">
-                              <span className="total-price" id="summaryTotal">₹149</span>
+                              <span className="total-price" id="summaryTotal">{summaryTotal}</span>
                               <button className="btn btn-primary btn-pricing" style={{ width: "100%" }}  onClick={openOrderModal}>
                                   <Send />
                                   Initiate Launch
@@ -817,9 +817,9 @@ export default function Home() {
                   <div className="footer-bottom">
                       <p className="copyright">&copy; 2026 AirDosa Tech Labs Inc. All orbital coordinates protected. Made with crispiness.</p>
                       <div className="footer-socials">
-                          <a href="#" className="social-link" aria-label="Twitter"><Twitter /></a>
-                          <a href="#" className="social-link" aria-label="Instagram"><Instagram /></a>
-                          <a href="#" className="social-link" aria-label="GitHub"><Github /></a>
+                          <a href="#" className="social-link" aria-label="Bird"><Bird /></a>
+                          <a href="#" className="social-link" aria-label="Camera"><Camera /></a>
+                          <a href="#" className="social-link" aria-label="GitHub"><Code2 /></a>
                       </div>
                   </div>
               </div>
@@ -836,9 +836,9 @@ export default function Home() {
           {/* ==========================================
              FLIGHT CONTROL CENTER / ORDER MODAL
              ========================================== */}
-          <div className={`modal-overlay${orderModalActive ? " active" : ""}`} id="orderModal"  onClick="closeOrderModalOutside(event)">
+          <div className={`modal-overlay${orderModalActive ? " active" : ""}`} id="orderModal"  onClick={closeOrderModalOutside}>
               <div className="modal-content glass-panel">
-                  <button className="modal-close"  onClick="closeOrderModal()" aria-label="Close modal">
+                  <button className="modal-close"  onClick={closeOrderModal} aria-label="Close modal">
                       <X />
                   </button>
                   
@@ -851,7 +851,7 @@ export default function Home() {
                           <div className="db-card-icon"><Satellite /></div>
                           <div className="db-card-info">
                               <span className="db-lbl">Satellite Uplink</span>
-                              <span className="db-val" id="telemetryGPS">Connected</span>
+                              <span className="db-val" id="telemetryGPS">{telemetryGPS}</span>
                           </div>
                       </div>
       
@@ -859,7 +859,7 @@ export default function Home() {
                           <div className="db-card-icon"><BatteryCharging /></div>
                           <div className="db-card-info">
                               <span className="db-lbl">Drone Battery</span>
-                              <span className="db-val" id="telemetryBattery">98.2%</span>
+                              <span className="db-val" id="telemetryBattery">{telemetryBattery}</span>
                           </div>
                       </div>
       
@@ -867,7 +867,7 @@ export default function Home() {
                           <div className="db-card-icon"><Compass /></div>
                           <div className="db-card-info">
                               <span className="db-lbl">Wind Drift</span>
-                              <span className="db-val" id="telemetryWind">2.4 knots</span>
+                              <span className="db-val" id="telemetryWind">{telemetryWind}</span>
                           </div>
                       </div>
       
@@ -875,7 +875,7 @@ export default function Home() {
                           <div className="db-card-icon"><Flame /></div>
                           <div className="db-card-info">
                               <span className="db-lbl">Core Tava Temp</span>
-                              <span className="db-val" id="telemetryTemp">190° C</span>
+                              <span className="db-val" id="telemetryTemp">{telemetryTemp}</span>
                           </div>
                       </div>
       
@@ -884,14 +884,11 @@ export default function Home() {
                   {/* Delivery Progress Animation UI */}
                   <div className="progress-container">
                       <div className="progress-header">
-                          <span className="progress-status" id="progressStatusText">
-                              <Radio />
-                              Awaiting Launch Sequence
-                          </span>
-                          <span className="progress-time" id="progressTimeText">--:--</span>
+                          <span className="progress-status" id="progressStatusText"><StatusIcon className={status.className} style={status.style} /> {status.text}</span>
+                          <span className="progress-time" id="progressTimeText">{progressTimeText}</span>
                       </div>
                       <div className="progress-track">
-                          <div className="progress-fill" id="progressBar"></div>
+                          <div className="progress-fill" id="progressBar" style={{ width: progressWidth }}></div>
                       </div>
                   </div>
       
@@ -900,10 +897,7 @@ export default function Home() {
                       <p style={{ textAlign: "center", marginBottom: "2rem", color: "var(--text-muted)", fontSize: "0.95rem" }}>
                           Confirming will assign the nearest quadcopter drone to compile and carry your selected dosa payload straight to your geo-coordinates.
                       </p>
-                      <button className="btn btn-primary btn-launch-final" id="launchBtn"  onClick="runSimulatedFlight()">
-                          <Rocket />
-                          Initialize Launch Sequence
-                      </button>
+                      <button className="btn btn-primary btn-launch-final" id="launchBtn" onClick={runSimulatedFlight} disabled={launchDisabled} style={{ opacity: launchOpacity }}>{launchButtonMode === "launching" ? "Launching Drone..." : (<><Rocket /> Initialize Launch Sequence</>)}</button>
                   </div>
               </div>
           </div>

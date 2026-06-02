@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AirDosa — AI-Powered Instant Dosa Delivery Drones
 
-## Getting Started
+Next.js landing page for AirDosa, converted from the original single-file `index.html`.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## GitHub Actions
 
-To learn more about Next.js, take a look at the following resources:
+This repo includes two workflows:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Workflow | File | Purpose |
+|----------|------|---------|
+| **CI** | `.github/workflows/ci.yml` | Lint and build on every push/PR to `main` |
+| **Deploy** | `.github/workflows/deploy.yml` | Build and publish to GitHub Pages on push to `main` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Enable GitHub Pages (one-time setup)
 
-## Deploy on Vercel
+1. Push this repo to [github.com/neelima1005/Live_Air_Dosa](https://github.com/neelima1005/Live_Air_Dosa).
+2. On GitHub, go to **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. After the next push to `main`, the **Deploy to GitHub Pages** workflow will publish the site.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Live URL: **https://neelima1005.github.io/Live_Air_Dosa/**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project structure
+
+```
+app/
+  layout.js    # Root layout, fonts, metadata
+  page.js      # Main landing page (client component)
+  globals.css  # All styles from the original HTML
+public/        # Static assets (hero image, etc.)
+index.html     # Original source file (kept for reference)
+```
