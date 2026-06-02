@@ -448,7 +448,7 @@ export default function Home() {
                   <div className="hero-content">
                       <div className="badge">
                           <Sparkles />
-                          India's First AI Dosa Drone Fleet
+                          India&apos;s First AI Dosa Drone Fleet
                       </div>
                       <h1 className="hero-title">
                           Crispy Dosas.<br />
@@ -456,7 +456,7 @@ export default function Home() {
                           In <span className="grad-secondary">5 Minutes.</span>
                       </h1>
                       <p className="hero-tagline">
-                          Experience India's first AI-navigated, thermal-insulated dosa delivery network. From our smart-tava directly to your balcony—steaming hot, perfectly crispy.
+                          Experience India&apos;s first AI-navigated, thermal-insulated dosa delivery network. From our smart-tava directly to your balcony—steaming hot, perfectly crispy.
                       </p>
                       <div className="hero-ctas">
                           <button className="btn btn-primary"  onClick={openOrderModal}>
@@ -754,7 +754,7 @@ export default function Home() {
                               <li><Check /> 2x Heavy-Payload Drones</li>
                               <li><Check /> Active Heat Pod Control (65°C - 80°C)</li>
                               <li><Check /> Priority Air-Traffic Slots</li>
-                              <li><Check /> Experimental "Cyber-Masala" Menu Access</li>
+                              <li><Check /> Experimental &quot;Cyber-Masala&quot; Menu Access</li>
                           </ul>
       
                           <button className="btn btn-primary btn-pricing"  onClick={openOrderModal}>Get AirDosa Gold</button>

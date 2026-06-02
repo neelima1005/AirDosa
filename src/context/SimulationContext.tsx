@@ -124,7 +124,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
             };
           }
 
-          let newBattery = Math.max(5, drone.battery - (drone.status === "In-Flight" ? 1.5 : 0.8));
+          const newBattery = Math.max(5, drone.battery - (drone.status === "In-Flight" ? 1.5 : 0.8));
           let newX = drone.x + (Math.random() - 0.5) * 4;
           let newY = drone.y + (Math.random() - 0.5) * 4;
           
