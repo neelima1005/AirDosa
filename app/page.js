@@ -425,7 +425,7 @@ export default function Home() {
                           <li><a href="#features" className="nav-link" onClick={closeMenu}>Features</a></li>
                           <li><a href="#configurator" className="nav-link" onClick={closeMenu}>Flight Customizer</a></li>
                           <li><a href="#pricing" className="nav-link" onClick={closeMenu}>Pricing</a></li>
-                          <li><a href="#safety" className="nav-link" onClick={closeMenu}>Technology</a></li>
+                          <li><a href="#registry" className="nav-link" onClick={closeMenu}>Flight Registry</a></li>
                       </ul>
                   </nav>
       
@@ -760,6 +760,80 @@ export default function Home() {
                           <button className="btn btn-primary btn-pricing"  onClick={openOrderModal}>Get AirDosa Gold</button>
                       </div>
       
+                  </div>
+              </div>
+          </section>
+
+          {/* ==========================================
+             FLIGHT REGISTRY SECTION (CSV DATA INTEGRATION)
+             ========================================== */}
+          <section className="section-padding" id="registry">
+              <div className="container">
+                  <div className="section-header reveal">
+                      <span className="badge">Data Ledgers</span>
+                      <h2 className="section-title">Live <span>Flight Registry</span></h2>
+                      <p className="section-desc">Real-time telemetry records logged across Bengaluru flight coordinates. Access the full telemetry database below.</p>
+                  </div>
+
+                  <div className="glass-panel reveal" style={{ padding: "2.5rem", overflowX: "auto" }}>
+                      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem" }}>
+                          <thead>
+                              <tr style={{ borderBottom: "1px solid var(--border-glass)" }}>
+                                  <th style={{ textAlign: "left", padding: "1rem 0.5rem", fontFamily: "var(--font-tech)", color: "var(--secondary)" }}>Order ID</th>
+                                  <th style={{ textAlign: "left", padding: "1rem 0.5rem", color: "#fff" }}>Customer</th>
+                                  <th style={{ textAlign: "left", padding: "1rem 0.5rem", color: "#fff" }}>Locality</th>
+                                  <th style={{ textAlign: "left", padding: "1rem 0.5rem", color: "#fff" }}>Dosa Payload</th>
+                                  <th style={{ textAlign: "right", padding: "1rem 0.5rem", color: "#fff", fontFamily: "var(--font-tech)" }}>Distance</th>
+                                  <th style={{ textAlign: "right", padding: "1rem 0.5rem", color: "#fff", fontFamily: "var(--font-tech)" }}>Time</th>
+                                  <th style={{ textAlign: "center", padding: "1rem 0.5rem", color: "#fff" }}>Status</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                                  <td style={{ padding: "1rem 0.5rem", fontFamily: "var(--font-tech)", color: "var(--primary)", fontWeight: "600" }}>AD-1001</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-main)" }}>Arjun Mehta</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-muted)" }}>Indiranagar</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-muted)" }}>Masala Dosa + Classic Chutney</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "right", fontFamily: "var(--font-tech)", color: "var(--text-main)" }}>3.2 km</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "right", fontFamily: "var(--font-tech)", color: "var(--secondary)" }}>4.8 mins</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "center" }}><span style={{ background: "rgba(34, 197, 94, 0.1)", color: "#22c55e", padding: "0.25rem 0.75rem", borderRadius: "50px", fontSize: "0.8rem", fontWeight: "600" }}>Delivered</span></td>
+                              </tr>
+                              <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                                  <td style={{ padding: "1rem 0.5rem", fontFamily: "var(--font-tech)", color: "var(--primary)", fontWeight: "600" }}>AD-1002</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-main)" }}>Sneha Rao</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-muted)" }}>Koramangala</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-muted)" }}>Ghee Roast + Gunpowder Ghee</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "right", fontFamily: "var(--font-tech)", color: "var(--text-main)" }}>1.8 km</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "right", fontFamily: "var(--font-tech)", color: "var(--secondary)" }}>3.2 mins</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "center" }}><span style={{ background: "rgba(34, 197, 94, 0.1)", color: "#22c55e", padding: "0.25rem 0.75rem", borderRadius: "50px", fontSize: "0.8rem", fontWeight: "600" }}>Delivered</span></td>
+                              </tr>
+                              <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                                  <td style={{ padding: "1rem 0.5rem", fontFamily: "var(--font-tech)", color: "var(--primary)", fontWeight: "600" }}>AD-1003</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-main)" }}>Rohan Sharma</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-muted)" }}>HSR Layout</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-muted)" }}>Cheese Chilli + Extra Sambar</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "right", fontFamily: "var(--font-tech)", color: "var(--text-main)" }}>4.5 km</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "right", fontFamily: "var(--font-tech)", color: "var(--secondary)" }}>6.1 mins</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "center" }}><span style={{ background: "rgba(34, 197, 94, 0.1)", color: "#22c55e", padding: "0.25rem 0.75rem", borderRadius: "50px", fontSize: "0.8rem", fontWeight: "600" }}>Delivered</span></td>
+                              </tr>
+                              <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                                  <td style={{ padding: "1rem 0.5rem", fontFamily: "var(--font-tech)", color: "var(--primary)", fontWeight: "600" }}>AD-1004</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-main)" }}>Priyanka Nair</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-muted)" }}>Jayanagar</td>
+                                  <td style={{ padding: "1rem 0.5rem", color: "var(--text-muted)" }}>Masala Dosa + Classic Chutney</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "right", fontFamily: "var(--font-tech)", color: "var(--text-main)" }}>2.4 km</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "right", fontFamily: "var(--font-tech)", color: "var(--secondary)" }}>3.9 mins</td>
+                                  <td style={{ padding: "1rem 0.5rem", textAlign: "center" }}><span style={{ background: "rgba(34, 197, 94, 0.1)", color: "#22c55e", padding: "0.25rem 0.75rem", borderRadius: "50px", fontSize: "0.8rem", fontWeight: "600" }}>Delivered</span></td>
+                              </tr>
+                          </tbody>
+                      </table>
+
+                      <div style={{ marginTop: "2.5rem", display: "flex", justifyContent: "center" }}>
+                          <a href="/airdosa_delivery_logs.csv" download className="btn btn-primary" style={{ gap: "0.5rem" }}>
+                              <Activity style={{ width: "18px", height: "18px" }} />
+                              Download Telemetry Dataset (.CSV)
+                          </a>
+                      </div>
                   </div>
               </div>
           </section>
